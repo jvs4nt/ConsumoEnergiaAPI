@@ -12,7 +12,7 @@
 	<artifactId>ConsumoEnergiaAPI</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>ConsumoEnergiaAPI</name>
-	<description>API para controlar o as inserções de consumo no aplicativo Ecolight</description>
+	<description>API para controlar as inserções de consumo no aplicativo Ecolight</description>
 	<url/>
 	<licenses>
 		<license/>
