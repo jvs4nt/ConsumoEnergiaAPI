@@ -1,0 +1,11 @@
+Link do repositório: https://github.com/jvs4nt/ConsumoEnergiaAPI
+Link do DEPLOY em nuvem: https://consumoenergiaapi.onrender.com (Render)
+Link do vídeo pitch:
+Link do vídeo de apresentação do projeto:
+
+Dados do banco:
+host: aws-0-sa-east-1.pooler.supabase.com
+database: postgres
+port: 6543
+user: postgres.ykrfwvpurcxiuoreavyd
+password: EU6Rsy9pMgcpXk85
