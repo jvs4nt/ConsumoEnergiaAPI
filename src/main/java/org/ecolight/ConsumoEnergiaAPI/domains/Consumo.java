@@ -1,6 +1,7 @@
 package org.ecolight.ConsumoEnergiaAPI.domains;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 import lombok.Data;
 import java.util.Date;
@@ -27,6 +28,5 @@ public class Consumo {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "tb_assoc_id_assoc", referencedColumnName = "id_associativa", nullable = false)
-    @JsonIgnore
     private Associativa associativa;
 }
