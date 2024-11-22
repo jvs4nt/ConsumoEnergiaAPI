@@ -41,6 +41,12 @@ public class MetaService {
     }
 
     @Transactional
+    public Optional<Meta> buscarPorEmail(String email) {
+        return metaRepository.findByUsuarioEmail(email);
+    }
+
+
+    @Transactional
     public boolean excluirMeta(Integer id) {
         if (metaRepository.existsById(id)) {
             metaRepository.deleteById(id);

@@ -64,6 +64,21 @@ public class MetaController {
                 .orElse(ResponseEntity.notFound().build());
     }
 
+    @GetMapping("/{email}")
+    @Operation(summary = "Buscar meta por Email", description = "Retorna a meta de um usuário específico pelo email fornecido")
+    public ResponseEntity<EntityModel<Meta>> buscarMetaPorEmail(@PathVariable String email) {
+        return metaService.buscarPorEmail(email)
+                .map(meta -> {
+                    EntityModel<Meta> resource = EntityModel.of(meta);
+                    resource.add(WebMvcLinkBuilder.linkTo(WebMvcLinkBuilder.methodOn(MetaController.class)
+                            .buscarMetaPorId(meta.getId())).withSelfRel());
+                    resource.add(WebMvcLinkBuilder.linkTo(WebMvcLinkBuilder.methodOn(MetaController.class)
+                            .listarMetas()).withRel("all-metas"));
+                    return ResponseEntity.ok(resource);
+                })
+                .orElse(ResponseEntity.notFound().build());
+    }
+
     @PutMapping("/{id}")
     @Operation(summary = "Atualizar uma meta", description = "Atualiza os dados de uma meta existente")
     public ResponseEntity<EntityModel<Meta>> atualizarMeta(@PathVariable Integer id, @RequestBody Meta meta) {
