@@ -1,5 +1,6 @@
 package org.ecolight.ConsumoEnergiaAPI.domains;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.Data;
 import java.util.Date;
@@ -21,7 +22,6 @@ public class Meta {
     @Temporal(TemporalType.DATE)
     private Date dataCadastro;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "tb_usuario_id_usuario", nullable = false)
-    private Usuario usuario;
+    @Column(name = "tb_usuario_email", nullable = false)
+    private String usuarioEmail;
 }

@@ -35,7 +35,7 @@ public class MetaService {
         return metaRepository.findById(id).map(metaExistente -> {
             metaExistente.setValorMeta(metaAtualizada.getValorMeta());
             metaExistente.setDataCadastro(metaAtualizada.getDataCadastro());
-            metaExistente.setUsuario(metaAtualizada.getUsuario());
+            metaExistente.setUsuarioEmail(metaAtualizada.getUsuarioEmail());
             return metaRepository.save(metaExistente);
         });
     }
