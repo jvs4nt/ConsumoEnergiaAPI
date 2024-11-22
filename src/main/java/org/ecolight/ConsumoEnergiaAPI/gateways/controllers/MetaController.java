@@ -64,7 +64,7 @@ public class MetaController {
                 .orElse(ResponseEntity.notFound().build());
     }
 
-    @GetMapping("/{email}")
+    @GetMapping("/email/{email}")
     @Operation(summary = "Buscar meta por Email", description = "Retorna a meta de um usuário específico pelo email fornecido")
     public ResponseEntity<EntityModel<Meta>> buscarMetaPorEmail(@PathVariable String email) {
         return metaService.buscarPorEmail(email)
