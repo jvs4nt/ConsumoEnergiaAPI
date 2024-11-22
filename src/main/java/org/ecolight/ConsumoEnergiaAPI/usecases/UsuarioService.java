@@ -4,6 +4,8 @@ import jakarta.transaction.Transactional;
 import org.ecolight.ConsumoEnergiaAPI.domains.Usuario;
 import org.ecolight.ConsumoEnergiaAPI.gateways.repositories.UsuarioRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -23,6 +25,11 @@ public class UsuarioService {
     @Transactional
     public List<Usuario> listarTodosUsuarios() {
         return usuarioRepository.findAll();
+    }
+
+    @Transactional
+    public Page<Usuario> listarUsuariosComPaginacao(Pageable pageable) {
+        return usuarioRepository.findAll(pageable);
     }
 
     @Transactional

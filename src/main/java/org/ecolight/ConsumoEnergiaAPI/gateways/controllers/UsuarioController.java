@@ -5,13 +5,14 @@ import io.swagger.v3.oas.annotations.tags.Tag;
 import org.ecolight.ConsumoEnergiaAPI.domains.Usuario;
 import org.ecolight.ConsumoEnergiaAPI.usecases.UsuarioService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.hateoas.EntityModel;
 import org.springframework.hateoas.server.mvc.WebMvcLinkBuilder;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.Optional;
 import java.util.stream.Collectors;
 
 @RestController
@@ -46,6 +47,19 @@ public class UsuarioController {
                     return resource;
                 })
                 .collect(Collectors.toList());
+        return ResponseEntity.ok(usuarios);
+    }
+
+    @GetMapping("/paginado")
+    @Operation(summary = "Listar usuários com paginação", description = "Retorna uma lista paginada de usuários")
+    public ResponseEntity<Page<EntityModel<Usuario>>> listarUsuariosComPaginacao(Pageable pageable) {
+        Page<EntityModel<Usuario>> usuarios = usuarioService.listarUsuariosComPaginacao(pageable)
+                .map(usuario -> {
+                    EntityModel<Usuario> resource = EntityModel.of(usuario);
+                    resource.add(WebMvcLinkBuilder.linkTo(WebMvcLinkBuilder.methodOn(UsuarioController.class)
+                            .buscarUsuarioPorId(usuario.getId())).withSelfRel());
+                    return resource;
+                });
         return ResponseEntity.ok(usuarios);
     }
 
