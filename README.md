@@ -12,7 +12,16 @@ Este projeto é uma API REST desenvolvida em Java utilizando o framework Spring 
 - [Estrutura do Projeto](#estrutura-do-projeto)
 - [Endereços e Rotas da API](#endereços-e-rotas-da-api)
 - [Funcionalidades Implementadas](#funcionalidades-implementadas)
-- [Tecnologias Utilizadas](#tecnologias-utilizadas)
+- [Tecnologias Utilizadas](#tecnologias-utilizadas)\
+
+---
+
+## Links:
+- Link do DEPLOY: https://consumoenergiaapi.onrender.com (Render)
+- Link do repositório: https://github.com/jvs4nt/ConsumoEnergiaAPI
+- Link do DEPLOY em nuvem: https://consumoenergiaapi.onrender.com (Render)
+- Link do vídeo pitch:
+- Link do vídeo de apresentação do projeto:
 
 ---
 
