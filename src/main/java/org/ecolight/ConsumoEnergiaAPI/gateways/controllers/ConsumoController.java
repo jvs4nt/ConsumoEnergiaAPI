@@ -1,56 +1,78 @@
 package org.ecolight.ConsumoEnergiaAPI.gateways.controllers;
 
-import io.swagger.v3.oas.annotations.Operation;
-import io.swagger.v3.oas.annotations.tags.Tag;
 import org.ecolight.ConsumoEnergiaAPI.domains.Consumo;
 import org.ecolight.ConsumoEnergiaAPI.usecases.ConsumoService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
+import org.springframework.hateoas.EntityModel;
+import org.springframework.hateoas.server.mvc.WebMvcLinkBuilder;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping("/api/consumos")
-@Tag(name = "Consumos", description = "Gerenciamento de consumos de energia")
 public class ConsumoController {
 
     @Autowired
     private ConsumoService consumoService;
 
     @PostMapping
-    @Operation(summary = "Criar um novo consumo", description = "Adiciona um novo consumo ao sistema")
-    public ResponseEntity<Consumo> criarConsumo(@RequestBody Consumo consumo) {
+    public ResponseEntity<EntityModel<Consumo>> criarConsumo(@RequestBody Consumo consumo) {
         Consumo novoConsumo = consumoService.salvarConsumo(consumo);
-        return ResponseEntity.status(HttpStatus.CREATED).body(novoConsumo);
+        EntityModel<Consumo> resource = EntityModel.of(novoConsumo);
+        resource.add(WebMvcLinkBuilder.linkTo(WebMvcLinkBuilder.methodOn(ConsumoController.class)
+                .buscarConsumoPorId(novoConsumo.getId())).withSelfRel());
+        resource.add(WebMvcLinkBuilder.linkTo(WebMvcLinkBuilder.methodOn(ConsumoController.class)
+                .listarConsumos()).withRel("all-consumos"));
+        return ResponseEntity.created(WebMvcLinkBuilder.linkTo(
+                        WebMvcLinkBuilder.methodOn(ConsumoController.class).buscarConsumoPorId(novoConsumo.getId())).toUri())
+                .body(resource);
     }
 
     @GetMapping
-    @Operation(summary = "Listar todos os consumos", description = "Retorna uma lista com todos os consumos registrados")
-    public ResponseEntity<List<Consumo>> listarConsumos() {
-        List<Consumo> consumos = consumoService.listarTodosConsumos();
+    public ResponseEntity<List<EntityModel<Consumo>>> listarConsumos() {
+        List<EntityModel<Consumo>> consumos = consumoService.listarTodosConsumos().stream()
+                .map(consumo -> {
+                    EntityModel<Consumo> resource = EntityModel.of(consumo);
+                    resource.add(WebMvcLinkBuilder.linkTo(WebMvcLinkBuilder.methodOn(ConsumoController.class)
+                            .buscarConsumoPorId(consumo.getId())).withSelfRel());
+                    return resource;
+                })
+                .collect(Collectors.toList());
         return ResponseEntity.ok(consumos);
     }
 
     @GetMapping("/{id}")
-    @Operation(summary = "Buscar consumo por ID", description = "Retorna um consumo específico pelo ID")
-    public ResponseEntity<Consumo> buscarConsumoPorId(@PathVariable Integer id) {
+    public ResponseEntity<EntityModel<Consumo>> buscarConsumoPorId(@PathVariable Integer id) {
         return consumoService.buscarPorId(id)
-                .map(ResponseEntity::ok)
+                .map(consumo -> {
+                    EntityModel<Consumo> resource = EntityModel.of(consumo);
+                    resource.add(WebMvcLinkBuilder.linkTo(WebMvcLinkBuilder.methodOn(ConsumoController.class)
+                            .buscarConsumoPorId(id)).withSelfRel());
+                    resource.add(WebMvcLinkBuilder.linkTo(WebMvcLinkBuilder.methodOn(ConsumoController.class)
+                            .listarConsumos()).withRel("all-consumos"));
+                    return ResponseEntity.ok(resource);
+                })
                 .orElse(ResponseEntity.notFound().build());
     }
 
     @PutMapping("/{id}")
-    @Operation(summary = "Atualizar um consumo", description = "Atualiza um consumo existente pelo ID")
-    public ResponseEntity<Consumo> atualizarConsumo(@PathVariable Integer id, @RequestBody Consumo consumo) {
+    public ResponseEntity<EntityModel<Consumo>> atualizarConsumo(@PathVariable Integer id, @RequestBody Consumo consumo) {
         return consumoService.atualizarConsumo(id, consumo)
-                .map(ResponseEntity::ok)
+                .map(consumoAtualizado -> {
+                    EntityModel<Consumo> resource = EntityModel.of(consumoAtualizado);
+                    resource.add(WebMvcLinkBuilder.linkTo(WebMvcLinkBuilder.methodOn(ConsumoController.class)
+                            .buscarConsumoPorId(consumoAtualizado.getId())).withSelfRel());
+                    resource.add(WebMvcLinkBuilder.linkTo(WebMvcLinkBuilder.methodOn(ConsumoController.class)
+                            .listarConsumos()).withRel("all-consumos"));
+                    return ResponseEntity.ok(resource);
+                })
                 .orElse(ResponseEntity.notFound().build());
     }
 
     @DeleteMapping("/{id}")
-    @Operation(summary = "Excluir um consumo", description = "Remove um consumo específico pelo ID")
     public ResponseEntity<Void> excluirConsumo(@PathVariable Integer id) {
         if (consumoService.excluirConsumo(id)) {
             return ResponseEntity.noContent().build();

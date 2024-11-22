@@ -36,8 +36,7 @@ public class ConsumoService {
             consumoExistente.setDataUso(consumoAtualizado.getDataUso());
             consumoExistente.setTempoUso(consumoAtualizado.getTempoUso());
             consumoExistente.setTotalConsumo(consumoAtualizado.getTotalConsumo());
-            consumoExistente.setAssociativaUsuario(consumoAtualizado.getAssociativaUsuario());
-            consumoExistente.setAssociativaDispositivo(consumoAtualizado.getAssociativaDispositivo());
+            consumoExistente.setAssociativa(consumoAtualizado.getAssociativa());
             return consumoRepository.save(consumoExistente);
         });
     }

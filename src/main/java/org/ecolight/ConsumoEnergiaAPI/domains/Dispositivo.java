@@ -4,18 +4,18 @@ import jakarta.persistence.*;
 import lombok.Data;
 
 @Entity
-@Table(name = "TB_DISPOSITIVO")
+@Table(name = "tb_dispositivo")
 @Data
 public class Dispositivo {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "ID_DISPOSITIVO")
+    @Column(name = "id_dispositivo")
     private Integer id;
 
-    @Column(name = "NM_DISPOSITIVO", nullable = false, length = 250)
+    @Column(name = "nm_dispositivo", nullable = false, length = 250)
     private String nome;
 
-    @Column(name = "POTENCIA", nullable = false)
+    @Column(name = "potencia", nullable = false)
     private Double potencia;
 }

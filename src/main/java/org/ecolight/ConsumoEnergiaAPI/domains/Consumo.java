@@ -5,30 +5,26 @@ import lombok.Data;
 import java.util.Date;
 
 @Entity
-@Table(name = "TB_CONSUMO")
+@Table(name = "tb_consumo")
 @Data
 public class Consumo {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "ID_CONSUMO")
+    @Column(name = "id_consumo")
     private Integer id;
 
-    @Column(name = "DT_USO", nullable = false)
+    @Column(name = "dt_uso", nullable = false)
     @Temporal(TemporalType.DATE)
     private Date dataUso;
 
-    @Column(name = "TEMPO_USO", nullable = false)
+    @Column(name = "tempo_uso", nullable = false)
     private Double tempoUso;
 
-    @Column(name = "TOTAL_CONSUMO", nullable = false)
+    @Column(name = "total_consumo", nullable = false)
     private Double totalConsumo;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "TB_ASSOC_ID_USUARIO", referencedColumnName = "TB_USUARIO_ID_USUARIO", nullable = false)
-    private Associativa associativaUsuario;
-
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "TB_ASSOC_DISPOSITIVO", referencedColumnName = "TB_DISPOSITIVO_ID_DISPOS", nullable = false)
-    private Associativa associativaDispositivo;
+    @JoinColumn(name = "tb_assoc_id_assoc", referencedColumnName = "id_associativa", nullable = false)
+    private Associativa associativa;
 }

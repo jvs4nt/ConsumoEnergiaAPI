@@ -5,31 +5,31 @@ import lombok.Data;
 import java.util.Date;
 
 @Entity
-@Table(name = "TB_USUARIO")
+@Table(name = "tb_usuario")
 @Data
 public class Usuario {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "ID_USUARIO")
+    @Column(name = "id_usuario")
     private Integer id;
 
-    @Column(name = "NM_USUARIO", nullable = false, length = 150)
+    @Column(name = "nm_usuario", nullable = false, length = 150)
     private String nome;
 
-    @Column(name = "EMAIL", nullable = false, length = 300)
+    @Column(name = "email", nullable = false, length = 300)
     private String email;
 
-    @Column(name = "SENHA", nullable = false, length = 16)
+    @Column(name = "senha", nullable = false, length = 16)
     private String senha;
 
-    @Column(name = "TELEFONE", length = 11)
+    @Column(name = "telefone", length = 11)
     private Long telefone;
 
-    @Column(name = "DT_CADASTRO", nullable = false)
+    @Column(name = "dt_cadastro", nullable = false)
     @Temporal(TemporalType.DATE)
     private Date dataCadastro;
 
-    @Column(name = "GENERO", length = 1)
+    @Column(name = "genero", length = 1)
     private String genero;
 }
