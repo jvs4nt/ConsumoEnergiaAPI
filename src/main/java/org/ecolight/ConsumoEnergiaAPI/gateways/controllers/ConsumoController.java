@@ -4,6 +4,7 @@ import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import org.ecolight.ConsumoEnergiaAPI.domains.Consumo;
 import org.ecolight.ConsumoEnergiaAPI.gateways.dtos.ConsumoDTO;
+import org.ecolight.ConsumoEnergiaAPI.gateways.dtos.ConsumoRequest;
 import org.ecolight.ConsumoEnergiaAPI.usecases.ConsumoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.hateoas.EntityModel;
@@ -23,17 +24,14 @@ public class ConsumoController {
     private ConsumoService consumoService;
 
     @PostMapping
-    @Operation(summary = "Criar um novo consumo", description = "Adiciona um novo consumo ao sistema")
-    public ResponseEntity<EntityModel<ConsumoDTO>> criarConsumo(@RequestBody Consumo consumo) {
-        Consumo novoConsumo = consumoService.salvarConsumo(consumo);
-        ConsumoDTO consumoDTO = consumoService.convertToDTO(novoConsumo);
-        EntityModel<ConsumoDTO> resource = EntityModel.of(consumoDTO);
+    @Operation(summary = "Criar um novo consumo", description = "Adiciona um novo consumo e, se necessário, cria a relação associativa")
+    public ResponseEntity<EntityModel<Consumo>> criarConsumo(@RequestBody ConsumoRequest consumoRequest) {
+        Consumo novoConsumo = consumoService.salvarConsumo(consumoRequest);
+        EntityModel<Consumo> resource = EntityModel.of(novoConsumo);
         resource.add(WebMvcLinkBuilder.linkTo(WebMvcLinkBuilder.methodOn(ConsumoController.class)
-                .buscarConsumoPorId(consumoDTO.getId())).withSelfRel());
-        resource.add(WebMvcLinkBuilder.linkTo(WebMvcLinkBuilder.methodOn(ConsumoController.class)
-                .listarConsumos()).withRel("all-consumos"));
+                .buscarConsumoPorId(novoConsumo.getId())).withSelfRel());
         return ResponseEntity.created(WebMvcLinkBuilder.linkTo(
-                        WebMvcLinkBuilder.methodOn(ConsumoController.class).buscarConsumoPorId(consumoDTO.getId())).toUri())
+                        WebMvcLinkBuilder.methodOn(ConsumoController.class).buscarConsumoPorId(novoConsumo.getId())).toUri())
                 .body(resource);
     }
 

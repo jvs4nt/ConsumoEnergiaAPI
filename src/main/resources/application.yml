@@ -4,6 +4,14 @@ spring:
     username: postgres.ykrfwvpurcxiuoreavyd
     password: EU6Rsy9pMgcpXk85
     driver-class-name: org.postgresql.Driver
+    hikari:
+      maximum-pool-size: 10
+      max-lifetime: 30000
+      leak-detection-threshold: 2000
+      cache-prep-stmts: true
+      prepStmtCacheSize: 250
+      prepStmtCacheSqlLimit: 2048
+      useServerPrepStmts: true
   jpa:
     hibernate:
       ddl-auto: none

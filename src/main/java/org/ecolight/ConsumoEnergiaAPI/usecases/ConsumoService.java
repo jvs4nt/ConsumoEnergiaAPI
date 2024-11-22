@@ -3,9 +3,14 @@ package org.ecolight.ConsumoEnergiaAPI.usecases;
 import jakarta.transaction.Transactional;
 import org.ecolight.ConsumoEnergiaAPI.domains.Associativa;
 import org.ecolight.ConsumoEnergiaAPI.domains.Consumo;
+import org.ecolight.ConsumoEnergiaAPI.domains.Dispositivo;
+import org.ecolight.ConsumoEnergiaAPI.domains.Usuario;
 import org.ecolight.ConsumoEnergiaAPI.gateways.dtos.ConsumoDTO;
+import org.ecolight.ConsumoEnergiaAPI.gateways.dtos.ConsumoRequest;
 import org.ecolight.ConsumoEnergiaAPI.gateways.repositories.AssociativaRepository;
 import org.ecolight.ConsumoEnergiaAPI.gateways.repositories.ConsumoRepository;
+import org.ecolight.ConsumoEnergiaAPI.gateways.repositories.DispositivoRepository;
+import org.ecolight.ConsumoEnergiaAPI.gateways.repositories.UsuarioRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -22,15 +27,38 @@ public class ConsumoService {
     @Autowired
     private AssociativaRepository associativaRepository;
 
+    @Autowired
+    private UsuarioRepository usuarioRepository;
+
+    @Autowired
+    private DispositivoRepository dispositivoRepository;
+
     @Transactional
-    public Consumo salvarConsumo(Consumo consumo) {
-        if (consumo.getAssociativa() != null && consumo.getAssociativa().getId() != null) {
-            Associativa associativa = associativaRepository.findById(consumo.getAssociativa().getId())
-                    .orElseThrow(() -> new IllegalArgumentException("Associativa não encontrada com ID: " + consumo.getAssociativa().getId()));
-            consumo.setAssociativa(associativa);
-        }
+    public Consumo salvarConsumo(ConsumoRequest consumoRequest) {
+        Associativa associativa = associativaRepository.findByUsuarioIdAndDispositivoId(
+                consumoRequest.getUsuarioId(),
+                consumoRequest.getDispositivoId()
+        ).orElseGet(() -> {
+            Usuario usuario = usuarioRepository.findById(consumoRequest.getUsuarioId())
+                    .orElseThrow(() -> new IllegalArgumentException("Usuário não encontrado com ID: " + consumoRequest.getUsuarioId()));
+            Dispositivo dispositivo = dispositivoRepository.findById(consumoRequest.getDispositivoId())
+                    .orElseThrow(() -> new IllegalArgumentException("Dispositivo não encontrado com ID: " + consumoRequest.getDispositivoId()));
+
+            Associativa novaAssociativa = new Associativa();
+            novaAssociativa.setUsuario(usuario);
+            novaAssociativa.setDispositivo(dispositivo);
+            return associativaRepository.save(novaAssociativa);
+        });
+
+        Consumo consumo = new Consumo();
+        consumo.setDataUso(consumoRequest.getDataUso());
+        consumo.setTempoUso(consumoRequest.getTempoUso());
+        consumo.setTotalConsumo(consumoRequest.getTotalConsumo());
+        consumo.setAssociativa(associativa);
+
         return consumoRepository.save(consumo);
     }
+
 
     @Transactional
     public List<ConsumoDTO> listarTodosConsumos() {
