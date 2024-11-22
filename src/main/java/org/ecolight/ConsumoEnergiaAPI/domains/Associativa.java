@@ -4,20 +4,20 @@ import jakarta.persistence.*;
 import lombok.Data;
 
 @Entity
-@Table(name = "tb_assoc_usuario_disp")
+@Table(name = "TB_ASSOC_USUARIO_DISP")
 @Data
 public class Associativa {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id_associativa")
-    private Integer id;
+    @Column(name = "ID_ASSOCIATIVA")
+    private Long id;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "tb_usuario_id_usuario", nullable = false)
+    @JoinColumn(name = "TB_USUARIO_ID_USUARIO", nullable = false)
     private Usuario usuario;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "tb_dispositivo_id_dispos", nullable = false)
+    @JoinColumn(name = "TB_DISPOSITIVO_ID_DISPOS", nullable = false)
     private Dispositivo dispositivo;
 }

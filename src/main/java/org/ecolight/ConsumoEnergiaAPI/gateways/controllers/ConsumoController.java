@@ -32,4 +32,29 @@ public class ConsumoController {
         List<Consumo> consumos = consumoService.listarTodosConsumos();
         return ResponseEntity.ok(consumos);
     }
+
+    @GetMapping("/{id}")
+    @Operation(summary = "Buscar consumo por ID", description = "Retorna um consumo específico pelo ID")
+    public ResponseEntity<Consumo> buscarConsumoPorId(@PathVariable Integer id) {
+        return consumoService.buscarPorId(id)
+                .map(ResponseEntity::ok)
+                .orElse(ResponseEntity.notFound().build());
+    }
+
+    @PutMapping("/{id}")
+    @Operation(summary = "Atualizar um consumo", description = "Atualiza um consumo existente pelo ID")
+    public ResponseEntity<Consumo> atualizarConsumo(@PathVariable Integer id, @RequestBody Consumo consumo) {
+        return consumoService.atualizarConsumo(id, consumo)
+                .map(ResponseEntity::ok)
+                .orElse(ResponseEntity.notFound().build());
+    }
+
+    @DeleteMapping("/{id}")
+    @Operation(summary = "Excluir um consumo", description = "Remove um consumo específico pelo ID")
+    public ResponseEntity<Void> excluirConsumo(@PathVariable Integer id) {
+        if (consumoService.excluirConsumo(id)) {
+            return ResponseEntity.noContent().build();
+        }
+        return ResponseEntity.notFound().build();
+    }
 }
