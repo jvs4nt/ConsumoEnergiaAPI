@@ -1,0 +1,658 @@
+{
+  "_type":"export",
+  "__export_format":4,
+  "__export_date":"2024-11-23T00:09:00.663Z",
+  "__export_source":"insomnia.desktop.app:v10.1.1",
+  "resources":[
+    {
+      "_id":"req_0616c22354cb4deca9b4f50c330f083a",
+      "parentId":"wrk_f5d02f9da5064fccacac16d9849d0692",
+      "modified":1732317699941,
+      "created":1732316532097,
+      "url":"localhost:8080/swagger-ui.html",
+      "name":"Swagger Doc",
+      "description":"",
+      "method":"GET",
+      "body":{
+
+      },
+      "parameters":[
+
+      ],
+      "headers":[
+        {
+          "name":"User-Agent",
+          "value":"insomnia/10.1.1"
+        }
+      ],
+      "authentication":{
+
+      },
+      "metaSortKey":-1732317680965,
+      "isPrivate":false,
+      "pathParameters":[
+
+      ],
+      "settingStoreCookies":true,
+      "settingSendCookies":true,
+      "settingDisableRenderRequestBody":false,
+      "settingEncodeUrl":true,
+      "settingRebuildPath":true,
+      "settingFollowRedirects":"global",
+      "_type":"request"
+    },
+    {
+      "_id":"wrk_f5d02f9da5064fccacac16d9849d0692",
+      "parentId":null,
+      "modified":1732316528571,
+      "created":1732316528571,
+      "name":"EcoLight Java API",
+      "description":"",
+      "scope":"collection",
+      "_type":"workspace"
+    },
+    {
+      "_id":"req_0c028ef5d7e247a3b064adabdfb739f9",
+      "parentId":"fld_947699aba96d4548b86b8c281936d460",
+      "modified":1732317694030,
+      "created":1732316588344,
+      "url":"localhost:8080/api/usuarios",
+      "name":"Usuarios",
+      "description":"",
+      "method":"GET",
+      "body":{
+
+      },
+      "parameters":[
+
+      ],
+      "headers":[
+        {
+          "name":"User-Agent",
+          "value":"insomnia/10.1.1"
+        }
+      ],
+      "authentication":{
+
+      },
+      "metaSortKey":-1732317687026,
+      "isPrivate":false,
+      "pathParameters":[
+
+      ],
+      "settingStoreCookies":true,
+      "settingSendCookies":true,
+      "settingDisableRenderRequestBody":false,
+      "settingEncodeUrl":true,
+      "settingRebuildPath":true,
+      "settingFollowRedirects":"global",
+      "_type":"request"
+    },
+    {
+      "_id":"fld_947699aba96d4548b86b8c281936d460",
+      "parentId":"wrk_f5d02f9da5064fccacac16d9849d0692",
+      "modified":1732317680865,
+      "created":1732317680865,
+      "name":"Usuarios",
+      "description":"",
+      "environment":{
+
+      },
+      "environmentPropertyOrder":null,
+      "metaSortKey":-1732317680865,
+      "_type":"request_group"
+    },
+    {
+      "_id":"req_7188515164d8439a853a2fa581e36951",
+      "parentId":"fld_947699aba96d4548b86b8c281936d460",
+      "modified":1732320234228,
+      "created":1732318965493,
+      "url":"http://localhost:8080/api/usuarios/paginado?page=0&size=10&sort=email,desc",
+      "name":"Usuarios PAG",
+      "description":"",
+      "method":"GET",
+      "body":{
+
+      },
+      "parameters":[
+
+      ],
+      "headers":[
+        {
+          "name":"User-Agent",
+          "value":"insomnia/10.1.1"
+        }
+      ],
+      "authentication":{
+
+      },
+      "metaSortKey":-1732317686976,
+      "isPrivate":false,
+      "pathParameters":[
+
+      ],
+      "settingStoreCookies":true,
+      "settingSendCookies":true,
+      "settingDisableRenderRequestBody":false,
+      "settingEncodeUrl":true,
+      "settingRebuildPath":true,
+      "settingFollowRedirects":"global",
+      "_type":"request"
+    },
+    {
+      "_id":"req_5ff8a00d16724bcf944a08569682c50d",
+      "parentId":"fld_947699aba96d4548b86b8c281936d460",
+      "modified":1732317692639,
+      "created":1732316619461,
+      "url":"localhost:8080/api/usuarios",
+      "name":"Usuarios",
+      "description":"",
+      "method":"POST",
+      "body":{
+        "mimeType":"application/json",
+        "text":"{\n  \"nome\": \"João Silva\",\n  \"email\": \"joao321@gmail.com\",\n  \"senha\": \"senha123\",\n  \"telefone\": \"12345678901\",\n  \"dataCadastro\": \"2024-11-22\",\n  \"genero\": \"M\"\n}\n"
+      },
+      "parameters":[
+
+      ],
+      "headers":[
+        {
+          "name":"Content-Type",
+          "value":"application/json"
+        },
+        {
+          "name":"User-Agent",
+          "value":"insomnia/10.1.1"
+        }
+      ],
+      "authentication":{
+
+      },
+      "metaSortKey":-1732317686926,
+      "isPrivate":false,
+      "pathParameters":[
+
+      ],
+      "settingStoreCookies":true,
+      "settingSendCookies":true,
+      "settingDisableRenderRequestBody":false,
+      "settingEncodeUrl":true,
+      "settingRebuildPath":true,
+      "settingFollowRedirects":"global",
+      "_type":"request"
+    },
+    {
+      "_id":"req_5e2279b90d3748229069eb4264c57d17",
+      "parentId":"fld_947699aba96d4548b86b8c281936d460",
+      "modified":1732317697268,
+      "created":1732316774864,
+      "url":"localhost:8080/api/usuarios/16",
+      "name":"Usuarios",
+      "description":"",
+      "method":"PUT",
+      "body":{
+        "mimeType":"application/json",
+        "text":"{\n  \"nome\": \"João Silva Edit\",\n  \"email\": \"joao321@gmail.com\",\n  \"senha\": \"senha123\",\n  \"telefone\": \"12345678901\",\n  \"dataCadastro\": \"2024-11-22\",\n  \"genero\": \"M\"\n}\n"
+      },
+      "parameters":[
+
+      ],
+      "headers":[
+        {
+          "name":"Content-Type",
+          "value":"application/json"
+        },
+        {
+          "name":"User-Agent",
+          "value":"insomnia/10.1.1"
+        }
+      ],
+      "authentication":{
+
+      },
+      "metaSortKey":-1732317686826,
+      "isPrivate":false,
+      "pathParameters":[
+
+      ],
+      "settingStoreCookies":true,
+      "settingSendCookies":true,
+      "settingDisableRenderRequestBody":false,
+      "settingEncodeUrl":true,
+      "settingRebuildPath":true,
+      "settingFollowRedirects":"global",
+      "_type":"request"
+    },
+    {
+      "_id":"req_4729a6529876449e9b97911834d99ab7",
+      "parentId":"fld_9d555ed03a9b44be9762d9522730ec61",
+      "modified":1732317714859,
+      "created":1732317394047,
+      "url":"localhost:8080/api/metas",
+      "name":"Metas",
+      "description":"",
+      "method":"GET",
+      "body":{
+
+      },
+      "parameters":[
+
+      ],
+      "headers":[
+        {
+          "name":"User-Agent",
+          "value":"insomnia/10.1.1"
+        }
+      ],
+      "authentication":{
+
+      },
+      "metaSortKey":-1732317714818,
+      "isPrivate":false,
+      "pathParameters":[
+
+      ],
+      "settingStoreCookies":true,
+      "settingSendCookies":true,
+      "settingDisableRenderRequestBody":false,
+      "settingEncodeUrl":true,
+      "settingRebuildPath":true,
+      "settingFollowRedirects":"global",
+      "_type":"request"
+    },
+    {
+      "_id":"fld_9d555ed03a9b44be9762d9522730ec61",
+      "parentId":"wrk_f5d02f9da5064fccacac16d9849d0692",
+      "modified":1732317712805,
+      "created":1732317707481,
+      "name":"Metas",
+      "description":"",
+      "environment":{
+
+      },
+      "environmentPropertyOrder":null,
+      "metaSortKey":-1732316531722,
+      "_type":"request_group"
+    },
+    {
+      "_id":"req_79d75a60c1e2435b92f7fba8392e7d1a",
+      "parentId":"fld_9d555ed03a9b44be9762d9522730ec61",
+      "modified":1732317718089,
+      "created":1732316817868,
+      "url":"localhost:8080/api/metas",
+      "name":"Metas",
+      "description":"",
+      "method":"POST",
+      "body":{
+        "mimeType":"application/json",
+        "text":"{\n  \"valorMeta\": 4000.0,\n  \"dataCadastro\": \"2024-11-22\",\n  \"usuarioEmail\": \"joao321@gmail.com\"\n}"
+      },
+      "parameters":[
+
+      ],
+      "headers":[
+        {
+          "name":"Content-Type",
+          "value":"application/json"
+        },
+        {
+          "name":"User-Agent",
+          "value":"insomnia/10.1.1"
+        }
+      ],
+      "authentication":{
+
+      },
+      "metaSortKey":-1732317714718,
+      "isPrivate":false,
+      "pathParameters":[
+
+      ],
+      "settingStoreCookies":true,
+      "settingSendCookies":true,
+      "settingDisableRenderRequestBody":false,
+      "settingEncodeUrl":true,
+      "settingRebuildPath":true,
+      "settingFollowRedirects":"global",
+      "_type":"request"
+    },
+    {
+      "_id":"req_1856a13a8b0949a5bb510445478de1a8",
+      "parentId":"fld_9d555ed03a9b44be9762d9522730ec61",
+      "modified":1732317721374,
+      "created":1732317426686,
+      "url":"localhost:8080/api/metas/1",
+      "name":"Metas",
+      "description":"",
+      "method":"PUT",
+      "body":{
+        "mimeType":"application/json",
+        "text":"{\n\t\t\"valorMeta\": 250.0,\n\t\t\"dataCadastro\": \"2025-06-01\",\n\t\t\"usuarioEmail\": \"joao.silva@email.com\"\n}"
+      },
+      "parameters":[
+
+      ],
+      "headers":[
+        {
+          "name":"Content-Type",
+          "value":"application/json"
+        },
+        {
+          "name":"User-Agent",
+          "value":"insomnia/10.1.1"
+        }
+      ],
+      "authentication":{
+
+      },
+      "metaSortKey":-1732317714618,
+      "isPrivate":false,
+      "pathParameters":[
+
+      ],
+      "settingStoreCookies":true,
+      "settingSendCookies":true,
+      "settingDisableRenderRequestBody":false,
+      "settingEncodeUrl":true,
+      "settingRebuildPath":true,
+      "settingFollowRedirects":"global",
+      "_type":"request"
+    },
+    {
+      "_id":"req_b8b7ce558b0b46f8bbb9d994e7bc7b87",
+      "parentId":"fld_61cd1653e82a45a18225a5ae402377a2",
+      "modified":1732317754183,
+      "created":1732317530539,
+      "url":"localhost:8080/api/dispositivos",
+      "name":"Dispositivos",
+      "description":"",
+      "method":"GET",
+      "body":{
+
+      },
+      "parameters":[
+
+      ],
+      "headers":[
+        {
+          "name":"User-Agent",
+          "value":"insomnia/10.1.1"
+        }
+      ],
+      "authentication":{
+
+      },
+      "metaSortKey":-1732317745856,
+      "isPrivate":false,
+      "pathParameters":[
+
+      ],
+      "settingStoreCookies":true,
+      "settingSendCookies":true,
+      "settingDisableRenderRequestBody":false,
+      "settingEncodeUrl":true,
+      "settingRebuildPath":true,
+      "settingFollowRedirects":"global",
+      "_type":"request"
+    },
+    {
+      "_id":"fld_61cd1653e82a45a18225a5ae402377a2",
+      "parentId":"wrk_f5d02f9da5064fccacac16d9849d0692",
+      "modified":1732317840893,
+      "created":1732317737332,
+      "name":"Dispositivos",
+      "description":"",
+      "environment":{
+
+      },
+      "environmentPropertyOrder":null,
+      "metaSortKey":-1732316531653.25,
+      "_type":"request_group"
+    },
+    {
+      "_id":"req_0ecd50771515457e9657cb7e8cf43acc",
+      "parentId":"fld_61cd1653e82a45a18225a5ae402377a2",
+      "modified":1732317755186,
+      "created":1732317554340,
+      "url":"localhost:8080/api/dispositivos",
+      "name":"Dispositivos",
+      "description":"",
+      "method":"POST",
+      "body":{
+        "mimeType":"application/json",
+        "text":"{\n\t\"nome\": \"Secador\",\n\t\"potencia\": 60\n}"
+      },
+      "parameters":[
+
+      ],
+      "headers":[
+        {
+          "name":"Content-Type",
+          "value":"application/json"
+        },
+        {
+          "name":"User-Agent",
+          "value":"insomnia/10.1.1"
+        }
+      ],
+      "authentication":{
+
+      },
+      "metaSortKey":-1732317745806,
+      "isPrivate":false,
+      "pathParameters":[
+
+      ],
+      "settingStoreCookies":true,
+      "settingSendCookies":true,
+      "settingDisableRenderRequestBody":false,
+      "settingEncodeUrl":true,
+      "settingRebuildPath":true,
+      "settingFollowRedirects":"global",
+      "_type":"request"
+    },
+    {
+      "_id":"req_fe8ff53de42e41329ebfe246d8271dc4",
+      "parentId":"fld_61cd1653e82a45a18225a5ae402377a2",
+      "modified":1732317750386,
+      "created":1732317572001,
+      "url":"localhost:8080/api/dispositivos/10",
+      "name":"Dispositivos",
+      "description":"",
+      "method":"PUT",
+      "body":{
+        "mimeType":"application/json",
+        "text":"{\n\t\"nome\": \"Secador de cabelo\",\n\t\"potencia\": 60\n}"
+      },
+      "parameters":[
+
+      ],
+      "headers":[
+        {
+          "name":"Content-Type",
+          "value":"application/json"
+        },
+        {
+          "name":"User-Agent",
+          "value":"insomnia/10.1.1"
+        }
+      ],
+      "authentication":{
+
+      },
+      "metaSortKey":-1732317745756,
+      "isPrivate":false,
+      "pathParameters":[
+
+      ],
+      "settingStoreCookies":true,
+      "settingSendCookies":true,
+      "settingDisableRenderRequestBody":false,
+      "settingEncodeUrl":true,
+      "settingRebuildPath":true,
+      "settingFollowRedirects":"global",
+      "_type":"request"
+    },
+    {
+      "_id":"req_c86d159cdd2e4e18ac56687e2524a0cd",
+      "parentId":"fld_b65c90916fbf4aeda22e64ddeb84fd79",
+      "modified":1732317879521,
+      "created":1732317845054,
+      "url":"localhost:8080/api/consumos",
+      "name":"Consumos",
+      "description":"",
+      "method":"GET",
+      "body":{
+
+      },
+      "parameters":[
+
+      ],
+      "headers":[
+        {
+          "name":"User-Agent",
+          "value":"insomnia/10.1.1"
+        }
+      ],
+      "authentication":{
+
+      },
+      "metaSortKey":-1732317850696,
+      "isPrivate":false,
+      "pathParameters":[
+
+      ],
+      "settingStoreCookies":true,
+      "settingSendCookies":true,
+      "settingDisableRenderRequestBody":false,
+      "settingEncodeUrl":true,
+      "settingRebuildPath":true,
+      "settingFollowRedirects":"global",
+      "_type":"request"
+    },
+    {
+      "_id":"fld_b65c90916fbf4aeda22e64ddeb84fd79",
+      "parentId":"wrk_f5d02f9da5064fccacac16d9849d0692",
+      "modified":1732317838350,
+      "created":1732317829462,
+      "name":"Consumos",
+      "description":"",
+      "environment":{
+
+      },
+      "environmentPropertyOrder":null,
+      "metaSortKey":-1732316531584.5,
+      "_type":"request_group"
+    },
+    {
+      "_id":"req_55bc70aeacc046c4b062aab92e84a24a",
+      "parentId":"fld_b65c90916fbf4aeda22e64ddeb84fd79",
+      "modified":1732318639313,
+      "created":1732317895474,
+      "url":"localhost:8080/api/consumos",
+      "name":"Consumos",
+      "description":"",
+      "method":"POST",
+      "body":{
+        "mimeType":"application/json",
+        "text":"{\n\t\"dataUso\": \"2024-08-01\",\n\t\"tempoUso\": 10,\n\t\"totalConsumo\": 100.0,\n\t\"usuarioId\": 16,\n\t\"dispositivoId\": 12\n}"
+      },
+      "parameters":[
+
+      ],
+      "headers":[
+        {
+          "name":"Content-Type",
+          "value":"application/json"
+        },
+        {
+          "name":"User-Agent",
+          "value":"insomnia/10.1.1"
+        }
+      ],
+      "authentication":{
+
+      },
+      "metaSortKey":-1732317798276,
+      "isPrivate":false,
+      "pathParameters":[
+
+      ],
+      "settingStoreCookies":true,
+      "settingSendCookies":true,
+      "settingDisableRenderRequestBody":false,
+      "settingEncodeUrl":true,
+      "settingRebuildPath":true,
+      "settingFollowRedirects":"global",
+      "_type":"request"
+    },
+    {
+      "_id":"req_db513bc0e5164d1cb0407074c145c8c8",
+      "parentId":"fld_b65c90916fbf4aeda22e64ddeb84fd79",
+      "modified":1732318679360,
+      "created":1732318664652,
+      "url":"localhost:8080/api/consumos/16",
+      "name":"Consumos",
+      "description":"",
+      "method":"PUT",
+      "body":{
+        "mimeType":"application/json",
+        "text":"{\n\t\"dataUso\": \"2024-08-01\",\n\t\"tempoUso\": 10,\n\t\"totalConsumo\": 150.0,\n\t\"usuarioId\": 16,\n\t\"dispositivoId\": 12\n}"
+      },
+      "parameters":[
+
+      ],
+      "headers":[
+        {
+          "name":"Content-Type",
+          "value":"application/json"
+        },
+        {
+          "name":"User-Agent",
+          "value":"insomnia/10.1.1"
+        }
+      ],
+      "authentication":{
+
+      },
+      "metaSortKey":-1732317772066,
+      "isPrivate":false,
+      "pathParameters":[
+
+      ],
+      "settingStoreCookies":true,
+      "settingSendCookies":true,
+      "settingDisableRenderRequestBody":false,
+      "settingEncodeUrl":true,
+      "settingRebuildPath":true,
+      "settingFollowRedirects":"global",
+      "_type":"request"
+    },
+    {
+      "_id":"env_47e4b7b2f9eec551f74f9d42845ba5c52bd3e746",
+      "parentId":"wrk_f5d02f9da5064fccacac16d9849d0692",
+      "modified":1732316528578,
+      "created":1732316528578,
+      "name":"Base Environment",
+      "data":{
+
+      },
+      "dataPropertyOrder":null,
+      "color":null,
+      "isPrivate":false,
+      "metaSortKey":1732316528578,
+      "_type":"environment"
+    },
+    {
+      "_id":"jar_47e4b7b2f9eec551f74f9d42845ba5c52bd3e746",
+      "parentId":"wrk_f5d02f9da5064fccacac16d9849d0692",
+      "modified":1732316528580,
+      "created":1732316528580,
+      "name":"Default Jar",
+      "cookies":[
+
+      ],
+      "_type":"cookie_jar"
+    }
+  ]
+}
