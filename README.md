@@ -100,6 +100,7 @@ http://localhost:8080/swagger-ui.html
 - **POST** `/api/metas`: Cria uma nova meta.
 - **GET** `/api/metas`: Lista todas as metas.
 - **GET** `/api/metas/{id}`: Retorna os detalhes de uma meta pelo ID.
+- **GET** `/api/metas/email/{email}`: Retorna os detalhes de uma meta pelo Email.
 - **PUT** `/api/metas/{id}`: Atualiza uma meta existente pelo ID.
 - **DELETE** `/api/metas/{id}`: Exclui uma meta existente pelo ID.
 
@@ -154,12 +155,11 @@ http://localhost:8080/swagger-ui.html
 **POST** `/api/consumos`
 ```json
 {
-    "dataUso": "2024-11-22",
-    "tempoUso": 4.5,
-    "totalConsumo": 120.75,
-    "associativa": {
-        "id": 1
-    }
+  "dataUso": "2024-08-01",
+  "tempoUso": 10,
+  "totalConsumo": 100.0,
+  "usuarioId": 16,
+  "dispositivoId": 12
 }
 ```
 
@@ -167,11 +167,9 @@ http://localhost:8080/swagger-ui.html
 **POST** `/api/metas`
 ```json
 {
-    "valorMeta": 300.0,
-    "dataCadastro": "2024-11-22",
-    "usuario": {
-        "id": 1
-    }
+  "valorMeta": 4000.0,
+  "dataCadastro": "2024-11-22",
+  "usuarioEmail": "joao342@gmail.com"
 }
 ```
 
