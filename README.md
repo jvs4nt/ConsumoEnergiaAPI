@@ -18,13 +18,9 @@ Este projeto é uma API REST desenvolvida em Java utilizando o framework Spring 
 
 ## Links:
 - Link do DEPLOY em nuvem: https://consumoenergiaapi.onrender.com (Render)
-- ![Uploading image.png…]()
-
 - Link do repositório: https://github.com/jvs4nt/ConsumoEnergiaAPI
-- ![Uploading image.png…]()
-
-- Link do vídeo pitch:
-- Link do vídeo de apresentação do projeto: https://www.youtube.com/watch?v=hgWoSCiyKqM
+- Link do vídeo pitch: https://youtu.be/akG1joR57Ew
+- Link do vídeo de apresentação do projeto: https://youtu.be/hgWoSCiyKqM
 
 ---
 
